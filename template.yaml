@@ -10,7 +10,7 @@ Resources:
       CodeUri: .
       Description: Removes PII from data
       MemorySize: 128
-      Timeout: 3
+      Timeout: 60
       Role: 'arn:aws:iam::474187235891:role/lambda-remove-pii-executor'
       Events:
         BucketEvent1:
