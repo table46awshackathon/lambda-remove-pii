@@ -8,7 +8,7 @@
   ],
   "scripts": {
     "create": "claudia create --region us-west-2 --timeout 60 --handler index.handler --no-optional-dependencies --set-env PII_KEY_PREFIX=pii,NOPII_KEY_PREFIX=clean",
-    "add-s3": "claudia add-s3-event-source --bucket table46hackathondata2 --prefix pii",
+    "add-s3": "claudia add-s3-event-source --bucket table46hackathondata --prefix pii",
     "update": "claudia update --no-optional-dependencies",
     "test-lambda": "claudia test-lambda --event sample-s3-event.json",
     "test": "sam local invoke --event sample-s3-event.json"

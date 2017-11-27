@@ -15,8 +15,8 @@
           "size": 1024
         },
         "bucket": {
-          "arn": "arn:aws:s3:::table46hackathondata2",
-          "name": "table46hackathondata2",
+          "arn": "arn:aws:s3:::table46hackathondata",
+          "name": "table46hackathondata",
           "ownerIdentity": {
             "principalId": "EXAMPLE"
           }
