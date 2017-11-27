@@ -12,3 +12,22 @@ Resources:
       MemorySize: 128
       Timeout: 3
       Role: 'arn:aws:iam::474187235891:role/lambda-remove-pii-executor'
+      Events:
+        BucketEvent1:
+          Type: S3
+          Properties:
+            Bucket:
+              Ref: Bucket1
+            Events:
+              - 's3:ObjectCreated:*'
+            Filter:
+              S3Key:
+                Rules:
+                  - Name: prefix
+                    Value: pii
+      Environment:
+        Variables:
+          NOPII_KEY_PREFIX: clean
+          PII_KEY_PREFIX: pii
+  Bucket1:
+    Type: 'AWS::S3::Bucket'

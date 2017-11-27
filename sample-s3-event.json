@@ -11,12 +11,12 @@
         "object": {
           "eTag": "0123456789abcdef0123456789abcdef",
           "sequencer": "0A1B2C3D4E5F678901",
-          "key": "test/key",
+          "key": "pii/1.csv",
           "size": 1024
         },
         "bucket": {
-          "arn": "arn:aws:s3:::example-bucket",
-          "name": "example-bucket",
+          "arn": "arn:aws:s3:::table46hackathondata2",
+          "name": "table46hackathondata2",
           "ownerIdentity": {
             "principalId": "EXAMPLE"
           }

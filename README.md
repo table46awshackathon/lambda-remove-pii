@@ -1,6 +1,7 @@
 # Lambda function that removes all Personal Identifiable Information (PII)
 
-- The Lambda function will react to S3 events
+- The Lambda function reacts to S3 put events, removes PII and stores
+it to a different location.
 
 ## Instalation
 
@@ -15,7 +16,13 @@ npm install -g aws-sam-local
 npm test
 ```
 
-## Test on AWS using Claudia JS
+# Deploy lambda on AWS using ClaudiaJS
+
+```
+npm run create
+```
+
+## Test on AWS using ClaudiaJS
 
 ```
 npm run test-lambda
