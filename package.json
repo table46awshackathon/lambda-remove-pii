@@ -1,0 +1,13 @@
+{
+  "name": "lambda-remove-pii",
+  "version": "1.0.0",
+  "description": "Removes PII from data",
+  "main": "index.js",
+  "scripts": {
+    "create": "claudia create --region us-west-2 --handler index.handler --no-optional-dependencies",
+    "test-lambda": "claudia test-lambda --event sample-s3-event.json",
+    "test": "sam local invoke --event sample-s3-event.json"
+  },
+  "author": "",
+  "license": "ISC"
+}
