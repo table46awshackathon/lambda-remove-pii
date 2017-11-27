@@ -19,7 +19,7 @@ npm test
 # Deploy lambda on AWS using ClaudiaJS
 
 ```
-npm run create
+npm run create && npm run add-s3
 ```
 
 ## Test on AWS using ClaudiaJS
