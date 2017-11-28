@@ -3,6 +3,8 @@
 const _ = require('lodash');
 const aws = require('aws-sdk');
 const s3 = new aws.S3({apiVersion: '2006-03-01', region: 'us-west-2'});
+const athena = new aws.Athena({region: 'us-west-2'});
+
 var csv = require('csv');
 
 exports.handler = function(event, context, callback) {
@@ -28,6 +30,7 @@ function process(record) {
   loadData(bucket, key)
     .then(convertData)
     .then((data) => saveData(bucket, key, data))
+    .then(() => refreshAthena(key))
     .catch(error => {
       console.log(error);
     });
@@ -70,4 +73,26 @@ function saveData(bucket, key, data) {
       Body: data
   };
   return s3.putObject(params).promise();
+}
+
+function refreshAthena(key) {
+  if (key !== 'pii/all.csv') {
+    console.log(`Refresh athena data: ${key}`);
+    return athena.getNamedQuery({NamedQueryId: 'a191d7e2-7cf1-4d2c-93a1-1f1d47fceedd'}).promise()
+      .then(query => {
+        console.log(query);
+        var params = {
+          QueryString: query.NamedQuery.QueryString,
+          ResultConfiguration: {
+            OutputLocation: 's3://table46hackathondata-athena/'
+          },
+          QueryExecutionContext: {
+            Database: query.NamedQuery.Database
+          }
+        };
+        return athena.startQueryExecution(params).promise();
+      })
+      .then(console.log);
+  }
+  return Promise.resolve();
 }
